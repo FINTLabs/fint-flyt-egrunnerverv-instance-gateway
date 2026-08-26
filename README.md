@@ -26,16 +26,16 @@ Kotlin-basert Spring Boot-tjeneste for mottak av eGrunnerverv-instanser i Flyt. 
 
 ## Arkitektur
 
-| Komponent                                       | Ansvar                                                             |
-|-------------------------------------------------|--------------------------------------------------------------------|
-| `EgrunnervervInstanceController`                | Eksterne endepunkter for mottak av `sak` og `journalpost`.         |
-| `EgrunnervervSakInstanceMappingService`         | Mapper `sak` til Flyt `InstanceObject`.                            |
-| `EgrunnervervJournalpostInstanceMappingService` | Mapper `journalpost`, inkludert filopplasting.                     |
-| `ResourceRepository`                            | Cachet oppslag fra Kafka-synkede FINT-ressurser.                   |
+| Komponent                                       | Ansvar                                                          |
+|-------------------------------------------------|-----------------------------------------------------------------|
+| `EgrunnervervInstanceController`                | Eksterne endepunkter for mottak av `sak` og `journalpost`.      |
+| `EgrunnervervSakInstanceMappingService`         | Mapper `sak` til Flyt `InstanceObject`.                         |
+| `EgrunnervervJournalpostInstanceMappingService` | Mapper `journalpost`, inkludert filopplasting.                  |
+| `ResourceRepository`                            | Oppslag direkte i Kafka-synkede `FintCache`-ressurser.          |
 | `DispatchService`                               | Håndterer lagring, konvertering og retry av dispatch-kvitteringer. |
-| `CaseRequestService`                            | Request-reply mot Kafka for å hente `SakResource`.                 |
-| `RestClientRequestService`                      | Sender kvitteringer til ServiceNow.                                |
-| `GlobalExceptionHandler`                        | Standardiserer feilresponser med `ProblemDetail`.                  |
+| `CaseRequestService`                            | Request-reply mot Kafka for å hente `SakResource`.              |
+| `RestClientRequestService`                      | Sender kvitteringer til ServiceNow.                             |
+| `GlobalExceptionHandler`                        | Standardiserer feilresponser med `ProblemDetail`.               |
 
 ## Flyt
 
@@ -347,5 +347,4 @@ Det betyr i praksis:
 - [`docker-compose.yaml`](docker-compose.yaml)
 - [`Dockerfile`](Dockerfile)
 - [`src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/instance/EgrunnervervInstanceController.kt`](src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/instance/EgrunnervervInstanceController.kt)
-- [`src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/dispatch/DispatchService.kt`](src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/dispatch/DispatchService.kt)
-
+- [`src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/infrastructure/dispatch/DispatchService.kt`](src/main/kotlin/no/novari/flyt/egrunnerverv/gateway/infrastructure/dispatch/DispatchService.kt)

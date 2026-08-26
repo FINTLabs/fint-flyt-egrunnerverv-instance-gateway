@@ -4,5 +4,4 @@ resources:
   - flais.yaml
   - egrunnerverv-dispatch-onepassword.yaml
   - oauth2-file-client.yaml
-  - oauth2-egrunnerverv-client.yaml
   - slack-onepassword.yaml

@@ -11,7 +11,6 @@ import no.novari.fint.model.resource.arkiv.noark.AdministrativEnhetResource
 import no.novari.fint.model.resource.arkiv.noark.ArkivressursResource
 import no.novari.fint.model.resource.felles.PersonResource
 import no.novari.flyt.egrunnerverv.gateway.ResourceLinkUtil
-import no.novari.flyt.egrunnerverv.gateway.instance.ResourceRepository
 import no.novari.kafka.consuming.ErrorHandlerConfiguration
 import no.novari.kafka.consuming.ErrorHandlerFactory
 import no.novari.kafka.consuming.ListenerConfiguration
@@ -40,13 +39,11 @@ class ResourceEntityConsumersConfiguration(
     @Bean
     fun arkivressursResourceEntityConsumer(
         arkivressursResourceCache: FintCache<String, ArkivressursResource>,
-        resourceRepository: ResourceRepository,
     ): ConcurrentMessageListenerContainer<String, ArkivressursResource> =
         createCacheConsumer(
             resourceName = "arkiv-noark-arkivressurs",
             resourceClass = ArkivressursResource::class.java,
             cache = arkivressursResourceCache,
-            afterCache = resourceRepository::updateArkivRessurs,
         )
 
     @Bean
@@ -92,13 +89,11 @@ class ResourceEntityConsumersConfiguration(
     @Bean
     fun personalressursResourceEntityConsumer(
         personalressursResourceCache: FintCache<String, PersonalressursResource>,
-        resourceRepository: ResourceRepository,
     ): ConcurrentMessageListenerContainer<String, PersonalressursResource> =
         createCacheConsumer(
             resourceName = "administrasjon-personal-personalressurs",
             resourceClass = PersonalressursResource::class.java,
             cache = personalressursResourceCache,
-            afterCache = resourceRepository::updatePersonalRessurs,
         )
 
     @Bean
@@ -115,7 +110,6 @@ class ResourceEntityConsumersConfiguration(
         resourceName: String,
         resourceClass: Class<T>,
         cache: FintCache<String, T>,
-        afterCache: ((T) -> Unit)? = null,
     ): ConcurrentMessageListenerContainer<String, T> {
         val listenerConfig =
             ListenerConfiguration
@@ -139,7 +133,6 @@ class ResourceEntityConsumersConfiguration(
                 { record ->
                     val value = record.value()
                     cache.put(ResourceLinkUtil.getSelfLinks(value), value)
-                    afterCache?.invoke(value)
                 },
                 listenerConfig,
                 errorHandlerFactory.createErrorHandler(

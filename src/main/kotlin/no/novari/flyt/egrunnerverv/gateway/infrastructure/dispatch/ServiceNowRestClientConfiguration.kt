@@ -23,7 +23,6 @@ class ServiceNowRestClientConfiguration {
     fun serviceNowAuthorizedClientManager(
         clientRegistrationRepository: ClientRegistrationRepository,
         authorizedClientService: OAuth2AuthorizedClientService,
-        props: ServiceNowDispatchProperties,
     ): OAuth2AuthorizedClientManager {
         val provider =
             OAuth2AuthorizedClientProviderBuilder

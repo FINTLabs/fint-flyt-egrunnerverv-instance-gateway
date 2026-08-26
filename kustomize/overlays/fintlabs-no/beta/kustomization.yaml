@@ -80,7 +80,7 @@ patches:
   - patch: |-
       - op: replace
         path: "/spec/itemPath"
-        value: "vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out"
+        value: "vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out-v2"
     target:
       kind: OnePasswordItem
       name: novari-flyt-egrunnerverv-dispatch-oauth2-client

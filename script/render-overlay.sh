@@ -213,7 +213,7 @@ while IFS= read -r file; do
     export READINESS_PATH="/beta/actuator/health/readiness"
     export LIVENESS_PATH="/beta/actuator/health/liveness"
     export METRICS_PATH="/beta/actuator/prometheus"
-    export DISPATCH_ONEPASSWORD_PATH="vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out"
+    export DISPATCH_ONEPASSWORD_PATH="vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out-v2"
     export SLACK_ONEPASSWORD_PATH="vaults/aks-beta-vault/items/fint-flyt-v1-slack-webhook"
   else
     export URL_BASE_PATH=""

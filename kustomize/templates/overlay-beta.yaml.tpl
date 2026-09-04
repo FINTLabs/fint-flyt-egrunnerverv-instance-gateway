@@ -34,6 +34,18 @@ patches:
         value:
           name: server.servlet.context-path
           value: "$URL_BASE_PATH"
+      # ServiceNow returnerer 401 hvis client_secret URL-encodes i
+      # Authorization: Basic-headeren (slik RFC 6749 §2.3.1 krever, og
+      # som Spring Security gjør by default). Verifisert mot
+      # vigoikstest.service-now.com 2026-05-29: client_secret med
+      # spesialtegn feiler i Basic-flow, men client_secret_post med
+      # credentials i body fungerer. Overstyrer derfor metoden her i
+      # stedet for å regenerere secret-et eller patche Spring.
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_EGRUNNERVERV_CLIENT_AUTHENTICATION_METHOD
+          value: "client_secret_post"
       - op: replace
         path: "/spec/probes/startup/path"
         value: "$STARTUP_PATH"

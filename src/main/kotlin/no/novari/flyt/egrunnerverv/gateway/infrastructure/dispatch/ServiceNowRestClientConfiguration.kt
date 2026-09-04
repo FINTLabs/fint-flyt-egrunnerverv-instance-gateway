@@ -8,7 +8,6 @@ import org.springframework.boot.http.client.ClientHttpRequestFactorySettings
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.oauth2.client.AuthorizedClientServiceOAuth2AuthorizedClientManager
-import org.springframework.security.oauth2.client.OAuth2AuthorizationContext
 import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientProviderBuilder
@@ -24,27 +23,17 @@ class ServiceNowRestClientConfiguration {
     fun serviceNowAuthorizedClientManager(
         clientRegistrationRepository: ClientRegistrationRepository,
         authorizedClientService: OAuth2AuthorizedClientService,
-        props: ServiceNowDispatchProperties,
     ): OAuth2AuthorizedClientManager {
         val provider =
             OAuth2AuthorizedClientProviderBuilder
                 .builder()
-                .password()
-                .refreshToken()
+                .clientCredentials()
                 .build()
 
         return AuthorizedClientServiceOAuth2AuthorizedClientManager(
             clientRegistrationRepository,
             authorizedClientService,
-        ).apply {
-            setAuthorizedClientProvider(provider)
-            setContextAttributesMapper {
-                mapOf(
-                    OAuth2AuthorizationContext.USERNAME_ATTRIBUTE_NAME to props.username,
-                    OAuth2AuthorizationContext.PASSWORD_ATTRIBUTE_NAME to props.password,
-                )
-            }
-        }
+        ).apply { setAuthorizedClientProvider(provider) }
     }
 
     @Bean
@@ -87,7 +76,5 @@ class ServiceNowRestClientConfiguration {
 @ConfigurationProperties(prefix = "novari.flyt.egrunnerverv.dispatch")
 data class ServiceNowDispatchProperties(
     var baseUrl: String = "",
-    var username: String = "",
-    var password: String = "",
     var registrationId: String = "",
 )

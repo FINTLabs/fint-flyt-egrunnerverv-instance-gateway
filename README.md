@@ -251,10 +251,8 @@ Vanlige properties og secrets:
 | `novari.flyt.file-service-url`                    | Base URL til fil-tjenesten.                                 |
 | `novari.flyt.egrunnerverv.dispatch.base-url`      | Base URL til ServiceNow-tabell-API.                         |
 | `novari.flyt.egrunnerverv.dispatch.token-uri`     | Token endpoint for ServiceNow OAuth2.                       |
-| `novari.flyt.egrunnerverv.dispatch.client-id`     | OAuth2 client id for ServiceNow.                            |
-| `novari.flyt.egrunnerverv.dispatch.client-secret` | OAuth2 client secret for ServiceNow.                        |
-| `novari.flyt.egrunnerverv.dispatch.username`      | ServiceNow brukernavn for password grant.                   |
-| `novari.flyt.egrunnerverv.dispatch.password`      | ServiceNow passord for password grant.                      |
+| `novari.flyt.egrunnerverv.dispatch.client-id`     | OAuth2 client id for ServiceNow (client credentials).       |
+| `novari.flyt.egrunnerverv.dispatch.client-secret` | OAuth2 client secret for ServiceNow (client credentials).   |
 | `slack.webhook.url`                               | Webhook for Slack-varsling ved manglende arkivressurs.      |
 
 ## Profiler

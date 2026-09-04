@@ -32,11 +32,6 @@ patches:
       - op: add
         path: "/spec/env/-"
         value:
-          name: server.servlet.context-path
-          value: "/beta"
-      - op: add
-        path: "/spec/env/-"
-        value:
           name: novari.flyt.egrunnerverv.checkEmailDomain
           value: "false"
       - op: add
@@ -49,6 +44,23 @@ patches:
         value:
           name: novari.flyt.egrunnerverv.dispatch.token-uri
           value: "https://vigoiks.service-now.com/oauth_token.do"
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: server.servlet.context-path
+          value: "/beta"
+      # ServiceNow returnerer 401 hvis client_secret URL-encodes i
+      # Authorization: Basic-headeren (slik RFC 6749 §2.3.1 krever, og
+      # som Spring Security gjør by default). Verifisert mot
+      # vigoikstest.service-now.com 2026-05-29: client_secret med
+      # spesialtegn feiler i Basic-flow, men client_secret_post med
+      # credentials i body fungerer. Overstyrer derfor metoden her i
+      # stedet for å regenerere secret-et eller patche Spring.
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_EGRUNNERVERV_CLIENT_AUTHENTICATION_METHOD
+          value: "client_secret_post"
       - op: replace
         path: "/spec/probes/startup/path"
         value: "/beta/actuator/health"
@@ -68,7 +80,7 @@ patches:
   - patch: |-
       - op: replace
         path: "/spec/itemPath"
-        value: "vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out"
+        value: "vaults/aks-beta-vault/items/novari-flyt-egrunnerverv-gateway-out-v2"
     target:
       kind: OnePasswordItem
       name: novari-flyt-egrunnerverv-dispatch-oauth2-client

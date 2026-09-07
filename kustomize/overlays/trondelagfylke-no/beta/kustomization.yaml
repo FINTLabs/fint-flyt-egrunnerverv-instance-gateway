@@ -32,8 +32,8 @@ patches:
       - op: add
         path: "/spec/env/-"
         value:
-          name: server.servlet.context-path
-          value: "/beta"
+          name: "novari.telemetry.org-id"
+          value: "trondelagfylke.no"
       - op: add
         path: "/spec/env/-"
         value:
@@ -44,6 +44,11 @@ patches:
         value:
           name: novari.flyt.egrunnerverv.checkSaksbehandler
           value: "false"
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: server.servlet.context-path
+          value: "/beta"
       - op: replace
         path: "/spec/probes/startup/path"
         value: "/beta/actuator/health"
@@ -56,6 +61,11 @@ patches:
       - op: replace
         path: "/spec/observability/metrics/path"
         value: "/beta/actuator/prometheus"
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: "OTEL_EXPORTER_OTLP_ENDPOINT"
+          value: "http://alloy.flais-system.svc.cluster.local:4318"
     target:
       kind: Application
       name: fint-flyt-egrunnerverv-gateway

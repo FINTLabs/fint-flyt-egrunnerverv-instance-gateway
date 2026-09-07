@@ -25,7 +25,12 @@ patches:
         path: "/spec/env/-"
         value:
           name: novari.kafka.topic.org-id
-          value: "$NAMESPACE"$ENV_PATCHES$DISPATCH_PATCHES
+          value: "$NAMESPACE"
+      - op: add
+        path: "/spec/env/-"
+        value:
+          name: "novari.telemetry.org-id"
+          value: "$ORG_ID"$ENV_PATCHES$DISPATCH_PATCHES
       - op: replace
         path: "/spec/probes/startup/path"
         value: "$STARTUP_PATH"

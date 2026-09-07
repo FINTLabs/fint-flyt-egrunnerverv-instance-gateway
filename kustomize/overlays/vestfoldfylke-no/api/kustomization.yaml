@@ -29,6 +29,11 @@ patches:
       - op: add
         path: "/spec/env/-"
         value:
+          name: "novari.telemetry.org-id"
+          value: "vestfoldfylke.no"
+      - op: add
+        path: "/spec/env/-"
+        value:
           name: novari.flyt.egrunnerverv.checkSaksansvarligEpost
           value: "false"
       - op: add

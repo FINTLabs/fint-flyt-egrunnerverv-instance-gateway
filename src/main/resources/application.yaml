@@ -27,6 +27,8 @@ server:
     max-swallow-size: 100MB
 
 spring:
+  application:
+    name: ${fint.application-id}
   profiles:
     include:
       - flyt-kafka

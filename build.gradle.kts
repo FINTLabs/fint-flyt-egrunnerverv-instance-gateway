@@ -80,8 +80,9 @@ dependencies {
     implementation("org.flywaydb:flyway-database-postgresql")
     runtimeOnly("org.postgresql:postgresql")
 
-    implementation("no.novari:flyt-web-instance-gateway:3.0.0")
+    implementation("no.novari:flyt-web-instance-gateway:3.1.0-rc-3")
     implementation("no.novari:flyt-cache:3.0.0")
+    implementation("no.novari:telemetry-starter:0.0.5")
 
     implementation("no.novari:fint-model-resource:$fintModelResourceVersion")
     implementation("no.novari:fint-arkiv-resource-model-java:$fintResourceModelVersion")

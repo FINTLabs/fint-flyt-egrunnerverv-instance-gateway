@@ -1,14 +1,14 @@
 # FINT Flyt egrunnerverv gateway
 
-Kotlin-basert Spring Boot-tjeneste for mottak av eGrunnerverv-instanser i Flyt. Tjenesten eksponerer et eksternt HTTP-API, mapper innkommende payloads til Flyt web instance-objekter, laster opp dokumenter til fil-tjenesten og håndterer dispatch av kvitteringer tilbake til kildesystemet når instanser er ferdig behandlet.
+Kotlin-basert Spring Boot-tjeneste for mottak av eGrunnerverv-instanser i Flyt. Tjenesten eksponerer et eksternt HTTP-API, mapper innkommende payloads til Flyt sine instance-objekter, laster opp dokumenter til fil-tjenesten og håndterer dispatch av kvitteringer tilbake til kildesystemet når instanser er ferdig behandlet.
 
 ## Høydepunkter
 
 - Spring Boot 3.5.x
 - Spring MVC (`spring-boot-starter-web`)
-- Kotlin 2.3.10
+- Kotlin 2.4.10
 - Java 25
-- `flyt-web-instance-gateway` for mottak og videreformidling av instanser
+- `flyt-gateway-starter` for mottak og videreformidling av instanser
 - `flyt-web-resource-server` for sikring av eksterne API-er
 - Global feilbehandling med `ProblemDetail`
 - Kafka-basert dispatchflyt for kvitteringer
@@ -21,7 +21,7 @@ Kotlin-basert Spring Boot-tjeneste for mottak av eGrunnerverv-instanser i Flyt. 
 - Validerer payloads og mapper dem til Flyt sine `InstanceObject`-strukturer.
 - Slår opp arkivressurser for saksansvarlig og saksbehandler når disse kontrollene er aktivert.
 - Laster opp hoveddokument og vedlegg til fil-tjenesten.
-- Publiserer instanser videre i Flyt-økosystemet via `flyt-web-instance-gateway`.
+- Publiserer instanser videre i Flyt-økosystemet via `flyt-gateway-starter`.
 - Lytter på `instance-dispatched`-events og bygger kvitteringspayloads tilbake til ServiceNow.
 
 ## Arkitektur
@@ -273,7 +273,7 @@ Default profiler inkludert via `application.yaml`:
 - lokal Kafka på `localhost:9092`
 - lokal Postgres på `localhost:5441`
 - `novari.flyt.file-service-url=http://localhost:8091`
-- `novari.flyt.web-instance-gateway.check-integration-exists=false`
+- `novari.flyt.gateway-starter.check-integration-exists=false`
 - enklere eGrunnerverv-validering ved å slå av oppslag for saksansvarlig og saksbehandler
 
 ## Lokal utvikling

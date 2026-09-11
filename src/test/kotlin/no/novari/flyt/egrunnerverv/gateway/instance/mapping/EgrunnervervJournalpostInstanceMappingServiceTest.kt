@@ -8,7 +8,7 @@ import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpos
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostInstance
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostInstanceBody
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostReceiver
-import no.novari.flyt.gateway.webinstance.model.File
+import no.novari.flyt.gateway.instance.model.File
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.BeforeEach

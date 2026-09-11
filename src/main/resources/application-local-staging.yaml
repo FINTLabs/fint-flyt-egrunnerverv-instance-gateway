@@ -13,7 +13,7 @@ novari:
         instance-initial-delay: 20000
         instance-fixed-delay: 10000
 
-    web-instance-gateway:
+    gateway-starter:
       check-integration-exists: false
 
   kafka:

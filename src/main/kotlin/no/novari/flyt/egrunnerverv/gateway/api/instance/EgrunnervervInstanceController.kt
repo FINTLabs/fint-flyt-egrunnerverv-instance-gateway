@@ -4,7 +4,7 @@ import jakarta.validation.Valid
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostInstance
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostInstanceBody
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakInstance
-import no.novari.flyt.gateway.webinstance.InstanceProcessor
+import no.novari.flyt.gateway.instance.InstanceProcessor
 import no.novari.flyt.webresourceserver.UrlPaths.EXTERNAL_API
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.Authentication

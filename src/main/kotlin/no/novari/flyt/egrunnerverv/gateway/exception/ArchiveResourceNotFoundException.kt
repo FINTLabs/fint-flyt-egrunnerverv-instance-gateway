@@ -1,7 +1,7 @@
 package no.novari.flyt.egrunnerverv.gateway.exception
 
 import no.novari.flyt.egrunnerverv.gateway.infrastructure.slack.SlackAlertService
-import no.novari.flyt.gateway.webinstance.exception.AbstractInstanceRejectedException
+import no.novari.flyt.gateway.instance.exception.AbstractInstanceRejectedException
 
 class ArchiveResourceNotFoundException(
     email: String,

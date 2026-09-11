@@ -6,7 +6,7 @@ import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpos
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostInstanceBody
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervJournalpostReceiver
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakInstance
-import no.novari.flyt.gateway.webinstance.InstanceProcessor
+import no.novari.flyt.gateway.instance.InstanceProcessor
 import no.novari.flyt.webresourceserver.UrlPaths.EXTERNAL_API
 import no.novari.flyt.webresourceserver.security.client.sourceapplication.SourceApplicationAuthorityMappingService
 import no.novari.flyt.webresourceserver.security.client.sourceapplication.SourceApplicationAuthorizationRequestService

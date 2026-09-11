@@ -7,7 +7,7 @@ import no.novari.flyt.egrunnerverv.gateway.instance.ResourceRepository
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakInstance
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakKlassering
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSaksPart
-import no.novari.flyt.gateway.webinstance.model.File
+import no.novari.flyt.gateway.instance.model.File
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.BeforeEach

@@ -7,9 +7,9 @@ import no.novari.flyt.egrunnerverv.gateway.instance.ResourceRepository
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakInstance
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSakKlassering
 import no.novari.flyt.egrunnerverv.gateway.instance.model.EgrunnervervSaksPart
-import no.novari.flyt.gateway.webinstance.InstanceMapper
-import no.novari.flyt.gateway.webinstance.model.File
-import no.novari.flyt.gateway.webinstance.model.instance.InstanceObject
+import no.novari.flyt.gateway.instance.InstanceMapper
+import no.novari.flyt.gateway.instance.model.File
+import no.novari.flyt.gateway.instance.model.instance.InstanceObject
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.util.UUID
